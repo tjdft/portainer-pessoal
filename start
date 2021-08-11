@@ -1,0 +1,44 @@
+#!/bin/bash
+# cores
+NC='\033[0m'
+RED='\033[1;31m'
+WHITE='\033[1;37m'
+CYAN='\033[1;36m'
+
+#Black        0;30     Dark Gray     1;30
+#Red          0;31     Light Red     1;31
+#Green        0;32     Light Green   1;32
+#Brown/Orange 0;33     Yellow        1;33
+#Blue         0;34     Light Blue    1;34
+#Purple       0;35     Light Purple  1;35
+#Cyan         0;36     Light Cyan    1;36
+#Light Gray   0;37     White         1;37
+
+clear
+echo -e "${WHITE}+-------------------------+${NC}"
+echo -e "${WHITE}| Iniciando Portainer ... |${NC}"
+echo -e "${WHITE}+-------------------------+${NC}"
+#read -p "Login: " login
+#read -sp "Password: " Password
+#echo ""
+#set -e
+#echo "Fechando Vpn ..."
+run1='ps -C "openconnect" -o pid='
+cmmd=$(eval 'ps -C "openconnect" -o cmd=')
+pids=$(eval $run1)
+#echo -e $password"\n" | sudo kill -9 ${pids}
+if [[ $pids != "" ]]
+then
+  echo ""
+  echo -e "${RED} Feche a Vpn ... ${pids} - ${cmmd}${NC}"
+  echo ""
+else
+  execute="docker-compose up -d"
+  output=$(eval $execute)
+  echo -e " ${output}"
+  echo -e "${WHITE} Para finalizar o portainer digite ./stop ...${NC}"
+  echo " "
+  echo -e "${CYAN} Open Browser ... ${NC}"
+  echo ""
+  google-chrome http://localhost:9990/ &
+fi

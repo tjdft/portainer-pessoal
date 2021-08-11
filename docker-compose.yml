@@ -1,0 +1,22 @@
+version: '3.7'
+
+services:
+  portainer:
+    container_name: gerenciador
+    image: portainer/portainer-ce
+    ports:
+      - "9990:9000"
+      - "8880:8000"
+    volumes:
+      - portainer_data:/data
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    networks:
+      - "rede-local"
+
+networks:
+  rede-local:
+    driver: bridge
+
+volumes:
+  portainer_data:
+
