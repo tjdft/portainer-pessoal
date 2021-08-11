@@ -1,4 +1,6 @@
 ## Portainer gerenciador de Conteiners CE
+![image](https://user-images.githubusercontent.com/1260578/129073002-bfd18698-3439-4704-9ee1-7af4b2bf33c7.png)
+
 
 Aplicação para gerenciamento e monitoramento de containers local (Docker)
 Configurado para ambiente local de Desenvolvimento
